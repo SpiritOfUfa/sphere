@@ -1,15 +1,13 @@
-import LoginPage from  '../pageobjects/login.page';
-import SecurePage from '../pageobjects/secure.page';
-
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
-        await LoginPage.open();
-
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!');
-        await expect(SecurePage.flashAlert).toBeExisting();
-        await expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!');
+const expect = require('chai').expect
+describe('Main page test suite',  () => {
+    it('Test 1',  () => {
+         browser.url('https://demoqa.com')
+         browser.pause(5000)
+         const expectedTitle = 'ToolsQA'
+         const actualTitle = browser.getTitle();
+         expect(actualTitle).to.equal(expectedTitle)
+         
     });
-});
+    });
 
 
