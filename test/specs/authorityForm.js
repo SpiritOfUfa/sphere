@@ -6,13 +6,13 @@ describe("Autority Form", () => {
     let voytiButton = $("div.login-button");
     await voytiButton.click();
     browser.pause(5000);
-    let email = await $$("div.input-wrapper")[2];
-    await email.click();
-    email.setValue("test123");
-   await browser.pause(9000)
-    let password = await $$("div.input-wrapper")[3];
+    const email =  $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(1) > input");
+     email.click();
+     email.setValue('test123');
+   await browser.pause(5000)
+    let password = await $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(2) > input");
      password.click();
      password.setValue("test123");
-     browser.pause(5000);
+     await browser.pause(9000);
   });
 });
