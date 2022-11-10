@@ -25,18 +25,18 @@ describe("Autorization Form", () => {
     let expectButtonName = "войти";
     expect(buttonName).to.equal(expectButtonName);
   });
-    // it("Check the elements on form ", async () => {
-    //   browser.url("https://dev.sphere.oelp.ru:7443/user/");
-    //   let voytiButton = $("div.login-button");
-    //   await voytiButton.click();
-    //   browser.pause(5000);
-    //   const email =  $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(1) > input");
-    //    email.click();
-    //    email.setValue('test123');
-    //  await browser.pause(5000)
-    //   let password = await $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(2) > input");
-    //    password.click();
-    //    password.setValue("test123");
-    //    await browser.pause(9000);
-    // });
+    it("Validation Login Form  ", async () => {
+      let email =  $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(1) > input");
+       email.click();
+       email.setValue('super@site.com');
+      let password =  $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(2) > input");
+       password.click();
+       password.setValue("1U31xK!qCC");
+       let submitButton = $("body > div:nth-child(11) > div > div > div.modal-body > form > button");
+       await browser.pause(1000);
+       submitButton.click();
+       await browser.pause(3000);
+       let actualUrl = await browser.getUrl();
+       expect(actualUrl).to.equal('https://dev.sphere.oelp.ru:7443/admin')
+    });
 });
