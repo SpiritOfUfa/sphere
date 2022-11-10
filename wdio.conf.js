@@ -22,7 +22,8 @@ exports.config = {
     //
     specs: [
         // './test/specs/**/example.e2e.js',
-        './test/specs/**/authorityForm.js'
+        './test/specs/**/authorityForm.js',
+        // './test/specs/**/google.js'
     ],
     // Patterns to exclude.
     exclude: [
