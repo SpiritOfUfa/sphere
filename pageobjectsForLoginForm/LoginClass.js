@@ -83,5 +83,20 @@ return $("body > div:nth-child(11) > div > div > div.Modal-message-wrapper.Modal
   get expectedNotificationText(){
 return 'Не удалось авторизоваться. Пожалуйста, проверьте введенные данные'
   } 
+  get actualUrl (){
+return browser.getUrl();
+  }  
+  get expectedUrl(){
+    return 'https://dev.sphere.oelp.ru:7443/admin';
+  }
+  get landingUrl(){
+    return "https://dev.sphere.oelp.ru:7443/user/"
+  }
+  get showPasswordBut(){
+    return $("body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(2) > button")
+  }
+  get showPasswordButAttribute(){
+return this.password.getAttribute("value")
+  }
 }
 export default new Login();
