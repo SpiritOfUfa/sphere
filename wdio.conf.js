@@ -22,12 +22,17 @@ exports.config = {
     //
     specs: [
         // './test/specs/**/example.e2e.js',
-        './test/specs/**/landingLoginPage.js',
-        // './test/specs/**/google.js'
+        // './test/specs/**/landingLoginPage.js',
+        // './test/specs/**/google.js',
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // 'path/to/excluded/files',
+        //'./test/specs/**/landingLoginPage.js',
+        './test/specs/**/example.e2e.js',
+        './test/specs/**/google.js'
+
     ],
     //
     // ============
