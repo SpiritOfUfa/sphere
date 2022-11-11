@@ -28,11 +28,10 @@ it('Validate Login form with incorrect password or email', async () => {
   LoginClass.password.click();
   LoginClass.password.setValue(LoginClass.incorrectPasswordInput);
   await browser.pause(3000);
-  //expect(await LoginClass.hideNotification.getAttribute('class')).to.equal(LoginClass.unActiveNotificationAttribute);
+  expect(await LoginClass.hideNotification.getAttribute('class')).to.equal(LoginClass.unActiveNotificationAttribute);
   await LoginClass.submitFormButton.click();
   await browser.pause(550)
   expect(await LoginClass.showNotification.getAttribute('class')).to.equal(LoginClass.activeNotificationAttribute);
-  expect(await LoginClass.notification.getAttribute('class')).to.equal(LoginClass.unActiveNotificationAttribute);
   expect(await LoginClass.notificationText).to.equal(LoginClass.expectedNotificationText);
 });
 
