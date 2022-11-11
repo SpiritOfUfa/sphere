@@ -1,12 +1,9 @@
 const expect = require("chai").expect;
-import { Urls, Hello } from "../../elements";
-import buttonsOnTheLoginForm from "../../pageobjectsForLoginForm/buttonsOnTheLoginForm"
-import tittleOnTheLoginForm from "../../pageobjectsForLoginForm/tittleOnTheLoginForm"
 import LoginClass from "../../pageobjectsForLoginForm/LoginClass"
 
 describe("Autorization Form", () => {
   it("Check the header name and name of button  ", async () => {
-    browser.url(Urls.landingUrl);
+    browser.url(LoginClass.landingUrl);
     expect(await LoginClass.voytiButtonTitle).to.equal(LoginClass.expectedVoytiButtonTittle)
     LoginClass.voytiButton.click();
     await browser.pause(1000);
@@ -21,7 +18,7 @@ describe("Autorization Form", () => {
   it("Check the button name", async () => {
     expect(await LoginClass.submitButtonName).to.equal(LoginClass.expectSubmitButtonName);
   });
-// //from here
+
 it('Validate Login form with incorrect password or email', async () => {
   LoginClass.email.click();
   LoginClass.email.setValue(LoginClass.emailInput);
@@ -33,37 +30,25 @@ it('Validate Login form with incorrect password or email', async () => {
   await browser.pause(550)
   expect(await LoginClass.showNotification.getAttribute('class')).to.equal(LoginClass.activeNotificationAttribute);
   expect(await LoginClass.notificationText).to.equal(LoginClass.expectedNotificationText);
+  LoginClass.showPasswordBut.click();
+  await browser.pause(5000);
+  expect(await LoginClass.showPasswordButAttribute).to.equal(LoginClass.incorrectPasswordInput)
 });
 
-  // it("Validation Login Form with correct password ", async () => {
-  //   let email = $(
-  //     "body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(1) > input"
-  //   );
-  //   email.click();
-  //   email.setValue("super@site.com");
-  //   let password = $(
-  //     "body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(2) > input"
-  //   );
-  //   password.click();
-  //   password.setValue("1U31xK!qCC");
-  //   let submitButton = $(
-  //     "body > div:nth-child(11) > div > div > div.modal-body > form > button"
-  //   );
-  //   await browser.pause(1000);
-  //   let showThePasswordButton = $(
-  //     "body > div:nth-child(11) > div > div > div.modal-body > form > div:nth-child(2) > button"
-  //   );
-  //   showThePasswordButton.click();
-  //   await browser.pause(5000);
-  //   expect(await password.getAttribute("type")).to.equal("text");
-  //   expect("1U31xK!qCC").to.equal("1U31xK!qCC");
-  //   showThePasswordButton.click();
-  //   expect(await password.getAttribute("type")).to.equal("password");
-//     // submitButton.click();
-//     // await browser.pause(1000);
-//     // let actualUrl = await browser.getUrl();
-//     // expect(actualUrl).to.equal(Urls.admin);
-//     // Hello();
-//   });
-  // 
+  it("Validation Login Form with correct password ", async () => {
+    LoginClass.email.setValue('');
+    await browser.pause(1000)
+    LoginClass.email.setValue(LoginClass.emailInput)
+    await browser.pause(1000)
+    LoginClass.password.setValue(LoginClass.correctPasswordInput)
+    await browser.pause(1000);
+    LoginClass.showPasswordBut.click();
+    await browser.pause(5000);
+    expect(await LoginClass.showPasswordButAttribute).to.equal(LoginClass.correctPasswordInput)
+    LoginClass.submitFormButton.click();
+    await browser.pause(1000);
+    let actualUrl = await browser.getUrl();
+    expect(await LoginClass.actualUrl).to.equal(LoginClass.expectedUrl);
+    // Hello();
+  });
 });
