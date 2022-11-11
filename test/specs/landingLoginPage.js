@@ -43,7 +43,7 @@ it('Validate Login form with incorrect password or email', async () => {
     LoginClass.password.setValue(LoginClass.correctPasswordInput)
     await browser.pause(1000);
     LoginClass.showPasswordBut.click();
-    await browser.pause(5000);
+    await browser.pause(2000);
     expect(await LoginClass.showPasswordButAttribute).to.equal(LoginClass.correctPasswordInput)
     LoginClass.submitFormButton.click();
     await browser.pause(1000);
