@@ -29,5 +29,14 @@ class MainPage{
     get filterSideBar(){
         return $("#root > div > div > div.panel_panel__uXUel.filter-panel_filter-panel-container__Q2wIb")
     }
+    get filterFavorites(){
+        return $("#root > div > div > div.panel_panel__uXUel.filter-panel_filter-panel-container__Q2wIb > aside > div.tooltip_tooltip-container__PuxAQ > button");
+    }
+    get filterFavoritesActualText(){
+        return "Показывать только избранные"
+    }
+    get filterByStatus(){
+        return $("#root > div > div > div.panel_panel__uXUel.filter-panel_filter-panel-container__Q2wIb > aside > div.objects-list-control > div:nth-child(1) > p")
+    }
 } 
 export default new MainPage();

@@ -4,23 +4,16 @@ import LoginClass from "../../pageobjectsForLoginForm/LoginClass";
 import adminSiteProfileClass from "../../pageobjectsForLoginForm/adminSiteProfileClass"
 
 describe("Test suit for main page", () => {
-  it("Check the object list button", async () => {
-    // browser.fullscreenWindow()
+  it("Filter testing", async () => {
     browser.maximizeWindow()
-    // browser.fullscreenWindow()
     browser.url(LoginClass.landingUrl);
-    await browser.pause(1000)
+    // await browser.pause(1000)
     LoginClass.voytiButton.click();
     await browser.pause(1000)
     LoginClass.email.setValue(LoginClass.emailInput);
     await browser.pause(1000);
     LoginClass.password.setValue(LoginClass.correctPasswordInput);
     await browser.pause(1000);
-    LoginClass.showPasswordBut.click();
-    await browser.pause(1000);
-    expect(await LoginClass.showPasswordButAttribute).to.equal(
-      LoginClass.correctPasswordInput
-    );
     LoginClass.submitFormButton.click();
     await browser.pause(1000);
     expect(await LoginClass.actualUrl).to.equal(LoginClass.adminUrl);
@@ -31,6 +24,8 @@ describe("Test suit for main page", () => {
     mainPageClass.filterButton.click();
     await browser.pause(2000);
     expect(await mainPageClass.filterSideBar.isExisting()).to.equal(true)
+    expect(await mainPageClass.filterFavorites.getText()).to.equal(mainPageClass.filterFavoritesActualText)
+    expect(await mainPageClass.filterByStatus.getText()).to.equal("Фильтрация по статусу")
 
   });
 });
