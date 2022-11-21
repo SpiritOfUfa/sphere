@@ -86,7 +86,7 @@ return 'Не удалось авторизоваться. Пожалуйста, 
   get actualUrl (){
 return browser.getUrl();
   }  
-  get expectedUrl(){
+  get adminUrl(){
     return 'https://dev.sphere.oelp.ru:7443/admin';
   }
   get landingUrl(){
