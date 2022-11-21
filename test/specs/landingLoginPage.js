@@ -67,7 +67,7 @@ describe("Autorization Form", () => {
     LoginClass.submitFormButton.click();
     await browser.pause(1000);
     let actualUrl = await browser.getUrl();
-    expect(await LoginClass.actualUrl).to.equal(LoginClass.expectedUrl);
+    expect(await LoginClass.actualUrl).to.equal(LoginClass.adminUrl);
     await browser.pause(2000);
     adminSiteProfileClass.profileButtonDropdown.click();
     await browser.pause(3000);
